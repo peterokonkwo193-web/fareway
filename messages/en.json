@@ -1,0 +1,56 @@
+{
+  "common": {
+    "brand": "Fareway",
+    "skipToContent": "Skip to main content",
+    "close": "Close",
+    "search": "Search",
+    "loading": "Loading…",
+    "currency": "Currency",
+    "language": "Language",
+    "theme": "Theme",
+    "toggleTheme": "Toggle light and dark mode",
+    "chooseCurrency": "Choose a currency",
+    "searchCurrencies": "Search currencies",
+    "noMatches": "No matches",
+    "indicativePrices": "Prices are indicative and confirmed by customer care before payment."
+  },
+  "nav": {
+    "primary": "Main navigation",
+    "flights": "Flights",
+    "hotels": "Hotels",
+    "carHire": "Car hire",
+    "explore": "Explore",
+    "manageBooking": "Find my booking",
+    "help": "Help",
+    "search": "Search",
+    "myBooking": "My booking",
+    "comingSoon": "Coming soon",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "about": "About Fareway",
+    "aboutUs": "About us",
+    "howBookingWorks": "How booking works",
+    "contact": "Contact customer care",
+    "explore": "Explore",
+    "exploreEverywhere": "Explore everywhere",
+    "cheapestMonth": "Cheapest this month",
+    "popularDestinations": "Popular destinations",
+    "help": "Help & support",
+    "faq": "FAQs",
+    "findBooking": "Find my booking",
+    "dataRequest": "Delete my data",
+    "legal": "Legal",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie notice",
+    "noPayment": "No payment is taken on this website. Every booking is confirmed and paid with our customer care team.",
+    "copyright": "© {year} Fareway. All rights reserved."
+  },
+  "cookies": {
+    "title": "Cookies on Fareway",
+    "body": "We only use essential cookies to remember your currency, language and theme, and to keep staff signed in. No advertising or tracking cookies.",
+    "accept": "OK, got it",
+    "learnMore": "Read our privacy policy"
+  }
+}

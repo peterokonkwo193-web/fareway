@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Search</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed-variant": "#7e2c00", "outline": "#747783", "surface-container": "#e7eeff", "on-secondary-fixed": "#001d34", "inverse-primary": "#b1c5ff", "secondary-fixed-dim": "#9bcbff", "on-primary-fixed": "#001947", "secondary-fixed": "#d0e4ff", "on-primary": "#ffffff", "surface": "#f9f9ff", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#ff9162", "on-surface": "#101c2e", "tertiary": "#521a00", "surface-tint": "#345baf", "primary-fixed": "#dae2ff", "on-secondary-container": "#00355a", "surface-dim": "#cfdaf3", "on-surface-variant": "#434652", "inverse-on-surface": "#ecf1ff", "primary-container": "#0b3d91", "on-secondary-fixed-variant": "#004a7a", "inverse-surface": "#253144", "tertiary-fixed": "#ffdbcd", "primary": "#002869", "error-container": "#ffdad6", "on-error": "#ffffff", "surface-container-highest": "#d7e3fc", "surface-bright": "#f9f9ff", "surface-container-low": "#f0f3ff", "outline-variant": "#c4c6d3", "on-tertiary-fixed": "#360f00", "on-secondary": "#ffffff", "background": "#f9f9ff", "secondary-container": "#1ca1fe", "on-primary-fixed-variant": "#144296", "error": "#ba1a1a", "surface-container-high": "#dee8ff", "on-error-container": "#93000a", "on-tertiary": "#ffffff", "on-background": "#101c2e", "tertiary-fixed-dim": "#ffb598", "primary-fixed-dim": "#b1c5ff", "surface-variant": "#d7e3fc", "on-primary-container": "#8dadff", "tertiary-container": "#762900", "secondary": "#00629f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-md": "1rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "space-sm": "0.5rem", "margin": "2rem" }, "fontFamily": { "label-lg": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "headline-lg": ["Inter"], "headline-xl": ["Inter"], "headline-xl-mobile": ["Inter"], "label-sm": ["Inter"], "price-lg": ["Inter"], "body-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "price-xl": ["Inter"], "body-md": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-md": ["14px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-xl-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "price-lg": ["22px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "price-xl": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(11,61,145,0.06)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Fareway Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VmPUzZsmWddWHr6cSV-UxlVCWb9M-MCjyDGKp5q5G3TvZAIOyGMgeAJjGjEekQZgr2hKmcMNIvgpWALt_3_zb1Ryg0lPM4gwtj8A-0n23aFOCgyCTN8svtzvslElSfrCDPoKF5XK58Yefi9A1Wgmt7Ts8qbYnGkBoCHQ_IspGCHhxE4S3uyHDUtR-rj5CZCEMh_6FI3urt2YfP3mF4ZjvfWhKZD-NjxMcew2_NFgJ4pE7AwNoMEDPvWrU4"/><span class="font-headline-md text-headline-md text-primary tracking-tight font-bold">Fareway</span></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></button><a aria-label="Profile" class="w-11 h-11 flex items-center justify-center rounded-full" data-path="account" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU8IMNdCGD_0dZ5Yr9VZoX68-Blvt9_Qdq-pOSTmfUkDXS4E6JYi9UsJBebicYxdMwLslT85Gqlhj6kXW6jwqJnswnJ5eeuk519uyTUN9tX9lMxdw7bNlzsw_HDpWQ3eFOLKq4fzSc-zSMrIWXp1APiZxysm9VLIZgltcDcnoNGLVoGSC08GWV1N8Aj3yi1fnMc1Or07dA-smDshCulPtx-SoRcTQogFPU3uyfK4NHVIfIi-w45lLerA"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Sticky Search Summary Bar -->
+<div class="sticky top-16 z-30 bg-surface-container-lowest/95 backdrop-blur-md px-gutter-mobile py-space-sm shadow-[0_4px_16px_-4px_rgba(11,61,145,0.08)] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">flight</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface truncate">
+<span class="font-bold tracking-tight">LHR</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_forward</span>
+<span class="font-bold tracking-tight">JFK</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+          12 Dec – 19 Dec • 1 adult, Economy
+        </div>
+</div>
+</div>
+<button aria-label="Edit Search" class="h-9 px-3 rounded-full bg-surface-container flex items-center gap-1 text-primary hover:bg-surface-container-high transition-colors shrink-0">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span class="font-label-sm text-label-sm">Edit</span>
+</button>
+</div>
+<!-- Main Scrollable Content -->
+<div class="flex flex-col px-gutter-mobile pt-space-md gap-space-md">
+<!-- Horizontally Scrolling Filters -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 -mx-gutter-mobile px-gutter-mobile">
+<!-- Active Stop Filter -->
+<button class="shrink-0 h-8 px-3 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Direct only</span>
+</button>
+<!-- Price Filter -->
+<button class="shrink-0 h-8 px-3 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 shadow-[0_2px_8px_rgba(11,61,145,0.04)] hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">payments</span>
+<span>Under £450</span>
+</button>
+<!-- Departure Time Filter -->
+<button class="shrink-0 h-8 px-3 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 shadow-[0_2px_8px_rgba(11,61,145,0.04)] hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">wb_sunny</span>
+<span>Morning departure</span>
+</button>
+<!-- Airlines Filter -->
+<button class="shrink-0 h-8 px-3 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 shadow-[0_2px_8px_rgba(11,61,145,0.04)] hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">airlines</span>
+<span>Airlines (12)</span>
+</button>
+<!-- Duration Filter -->
+<button class="shrink-0 h-8 px-3 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 shadow-[0_2px_8px_rgba(11,61,145,0.04)] hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+<span>Under 9h</span>
+</button>
+</div>
+<!-- Sort Tabs Row -->
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-surface-container-high rounded-xl">
+<!-- Cheapest Active -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-surface-container-lowest text-primary shadow-sm text-center">
+<span class="font-label-sm text-label-sm font-bold flex items-center gap-1">
+          Cheapest
+        </span>
+<span class="font-body-sm text-[11px] leading-tight text-on-tertiary-container font-semibold mt-0.5">£389</span>
+<span class="font-body-sm text-[10px] leading-tight text-on-surface-variant">8h 15m avg</span>
+</button>
+<!-- Fastest -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg text-on-surface-variant hover:text-on-surface transition-colors text-center">
+<span class="font-label-sm text-label-sm">Fastest</span>
+<span class="font-body-sm text-[11px] leading-tight text-on-surface font-semibold mt-0.5">£465</span>
+<span class="font-body-sm text-[10px] leading-tight text-on-surface-variant">7h 45m avg</span>
+</button>
+<!-- Best Balance -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-lg text-on-surface-variant hover:text-on-surface transition-colors text-center">
+<span class="font-label-sm text-label-sm">Best</span>
+<span class="font-body-sm text-[11px] leading-tight text-on-surface font-semibold mt-0.5">£412</span>
+<span class="font-body-sm text-[10px] leading-tight text-on-surface-variant">8h 00m bal</span>
+</button>
+</div>
+<!-- Track This Price Card -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex items-center justify-between gap-3">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Price alert: London to NY</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded-full bg-surface-container-highest text-[10px] font-bold text-primary shrink-0">Live</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-snug">
+            We'll notify you when prices drop below £389
+          </p>
+</div>
+</div>
+<!-- iOS-style Active Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 ml-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</label>
+</div>
+<!-- Flight Results Section -->
+<div class="flex flex-col gap-space-md">
+<!-- Card 1: Norse Atlantic Airways (Cheapest) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex flex-col gap-3 relative overflow-hidden">
+<!-- Cheapest Tag Badge -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container-low flex items-center justify-center text-primary font-bold text-xs tracking-tight shrink-0">
+<span class="material-symbols-outlined text-[18px]">flight_takeoff</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Norse Atlantic</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_offer</span>
+            Cheapest deal
+          </span>
+</div>
+<!-- Outbound Leg -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-headline-md text-headline-md font-bold">13:20</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">8h 10m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-secondary-fixed rounded-full relative flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px] rotate-90">navigation</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-[#1E9E5A] font-bold">Direct</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold">16:30</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>LHR (T3)</span>
+<span>JFK (T7)</span>
+</div>
+</div>
+<!-- Return Leg -->
+<div class="flex flex-col gap-1 pt-2 bg-surface-container-low/40 rounded-lg p-2">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-label-lg text-label-lg font-bold">18:45</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">7h 25m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-secondary-fixed rounded-full relative flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px] -rotate-90">navigation</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-[#1E9E5A] font-bold">Direct</span>
+</div>
+<div class="flex items-baseline gap-0.5">
+<span class="font-label-lg text-label-lg font-bold">07:10</span>
+<span class="text-[10px] text-tertiary-container font-bold">+1</span>
+</div>
+</div>
+<div class="flex justify-between font-body-sm text-[11px] text-on-surface-variant">
+<span>JFK Return</span>
+<span>LHR Arrival</span>
+</div>
+</div>
+<!-- Footer / Price / CTA -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-price-lg text-price-lg text-on-tertiary-container font-extrabold tracking-tight">£389</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">total</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">via Norse Direct</span>
+</div>
+<button class="h-10 px-4 rounded-xl bg-on-tertiary-container text-white font-label-md text-label-md flex items-center gap-1.5 shadow-[0_4px_12px_rgba(255,145,98,0.25)] hover:opacity-95 transition-opacity active:scale-[0.98]">
+<span>View deal</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: British Airways -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs tracking-tight shrink-0">
+<span class="material-symbols-outlined text-[18px]">flight</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">British Airways</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-[11px] font-bold">
+            Popular Pick
+          </span>
+</div>
+<!-- Outbound Leg -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-headline-md text-headline-md font-bold">09:40</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">7h 55m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-secondary-fixed rounded-full relative flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px] rotate-90">navigation</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-[#1E9E5A] font-bold">Direct</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold">12:35</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>LHR (T5)</span>
+<span>JFK (T8)</span>
+</div>
+</div>
+<!-- Return Leg -->
+<div class="flex flex-col gap-1 pt-2 bg-surface-container-low/40 rounded-lg p-2">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-label-lg text-label-lg font-bold">19:30</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">7h 20m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-secondary-fixed rounded-full relative flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px] -rotate-90">navigation</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-[#1E9E5A] font-bold">Direct</span>
+</div>
+<div class="flex items-baseline gap-0.5">
+<span class="font-label-lg text-label-lg font-bold">07:50</span>
+<span class="text-[10px] text-tertiary-container font-bold">+1</span>
+</div>
+</div>
+<div class="flex justify-between font-body-sm text-[11px] text-on-surface-variant">
+<span>JFK Return</span>
+<span>LHR Arrival</span>
+</div>
+</div>
+<!-- Footer / Price / CTA -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-price-lg text-price-lg text-on-tertiary-container font-extrabold tracking-tight">£415</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">total</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">via BritishAirways.com</span>
+</div>
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:bg-primary-container transition-colors active:scale-[0.98]">
+<span>Select flight</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Aer Lingus (Layover / Smart Feature) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary font-bold text-xs tracking-tight shrink-0">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Aer Lingus</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-[11px] font-medium">
+            1 Stop
+          </span>
+</div>
+<!-- Outbound Leg -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-headline-md text-headline-md font-bold">11:15</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">9h 40m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-outline-variant rounded-full relative flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-tertiary-container z-10"></div>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-semibold">1 stop</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold">15:55</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>LHR (T2)</span>
+<span>JFK (T7)</span>
+</div>
+</div>
+<!-- Layover highlight pill -->
+<div class="flex items-center gap-1.5 p-2 rounded-lg bg-surface-container-low text-on-surface-variant text-[11px] font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified_user</span>
+<span class="truncate">1 stop Dublin (1h 15m) • <strong>US Pre-clearance</strong></span>
+</div>
+<!-- Return Leg -->
+<div class="flex flex-col gap-1 pt-1 bg-surface-container-low/40 rounded-lg p-2">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-label-lg text-label-lg font-bold">17:20</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">9h 10m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-outline-variant rounded-full relative flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline z-10"></div>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-semibold">1 stop DUB</span>
+</div>
+<div class="flex items-baseline gap-0.5">
+<span class="font-label-lg text-label-lg font-bold">07:30</span>
+<span class="text-[10px] text-tertiary-container font-bold">+1</span>
+</div>
+</div>
+<div class="flex justify-between font-body-sm text-[11px] text-on-surface-variant">
+<span>JFK Return</span>
+<span>LHR Arrival</span>
+</div>
+</div>
+<!-- Footer / Price / CTA -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-price-lg text-price-lg text-on-tertiary-container font-extrabold tracking-tight">£398</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">total</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">via Trip.com</span>
+</div>
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:bg-primary-container transition-colors active:scale-[0.98]">
+<span>Select flight</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Virgin Atlantic -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-error-container flex items-center justify-center text-error font-bold text-xs tracking-tight shrink-0">
+<span class="material-symbols-outlined text-[18px]">flight_takeoff</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Virgin Atlantic</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-[#1E9E5A] font-label-sm text-[11px] font-bold">
+            Direct Flight
+          </span>
+</div>
+<!-- Outbound Leg -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-headline-md text-headline-md font-bold">15:05</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">8h 05m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-secondary-fixed rounded-full relative flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[14px] rotate-90">navigation</span>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-[#1E9E5A] font-bold">Direct</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold">18:10</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>LHR (T3)</span>
+<span>JFK (T4)</span>
+</div>
+</div>
+<!-- Single outbound summary note -->
+<div class="text-on-surface-variant font-body-sm text-[12px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">wifi</span>
+<span>Free messaging & USB charging onboard</span>
+</div>
+<!-- Footer / Price / CTA -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-price-lg text-price-lg text-on-tertiary-container font-extrabold tracking-tight">£438</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">total</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">via Virgin Atlantic</span>
+</div>
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:bg-primary-container transition-colors active:scale-[0.98]">
+<span>Select flight</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 5: Air France / KLM -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(11,61,145,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs tracking-tight shrink-0">
+<span class="material-symbols-outlined text-[18px]">airlines</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Air France / KLM</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-[11px] font-medium">
+            1 Stop
+          </span>
+</div>
+<!-- Outbound Leg -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-headline-md text-headline-md font-bold">08:30</span>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="font-body-sm text-[11px] text-on-surface-variant font-medium">10h 15m</span>
+<div class="w-full flex items-center my-0.5">
+<div class="h-[2px] w-full bg-outline-variant rounded-full relative flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline z-10"></div>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-semibold">1 stop CDG</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold">13:45</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>LHR (T4)</span>
+<span>JFK (T1)</span>
+</div>
+</div>
+<!-- Layover highlight -->
+<div class="flex items-center gap-1.5 p-2 rounded-lg bg-surface-container-low text-on-surface-variant text-[11px] font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+<span>1 stop in Paris CDG (1h 35m layover)</span>
+</div>
+<!-- Footer / Price / CTA -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-price-lg text-price-lg text-on-tertiary-container font-extrabold tracking-tight">£405</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">total</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">via Expedia</span>
+</div>
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:bg-primary-container transition-colors active:scale-[0.98]">
+<span>Select flight</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Reassurance / Trust Badge -->
+<div class="py-space-md flex flex-col items-center justify-center text-center gap-2">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm font-bold">Fareway Price Guarantee</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">
+        No hidden booking fees. Free 24h cancellation on eligible transatlantic routes.
+      </p>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_20px_-2px_rgba(11,61,145,0.08)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[64px] h-12 transition-colors gap-0.5 text-primary font-bold" data-path="search" href="#"><span class="material-symbols-outlined text-[24px]">search</span><span class="font-label-sm text-label-sm">Search</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 text-on-surface-variant hover:text-primary transition-colors gap-0.5" data-path="explore" href="#"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 text-on-surface-variant hover:text-primary transition-colors relative gap-0.5" data-path="trips" href="#"><span class="relative"><span class="material-symbols-outlined text-[24px]">flight_takeoff</span><span class="absolute -top-1 -right-1.5 w-2 h-2 rounded-full bg-secondary-container"></span></span><span class="font-label-sm text-label-sm">Trips</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 text-on-surface-variant hover:text-primary transition-colors gap-0.5" data-path="account" href="#"><span class="material-symbols-outlined text-[24px]">account_circle</span><span class="font-label-sm text-label-sm">Account</span></a></div></nav></body></html>

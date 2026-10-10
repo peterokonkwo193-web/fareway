@@ -1,0 +1,203 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Fareway design tokens.
+ * Brand values come from design-reference/fareway_flight_system/DESIGN.md.
+ * Text-on-colour pairs are tuned for WCAG AA (4.5:1 body text, 3:1 large/UI):
+ *  - CTA orange #FF7A3D carries navy text (6.6:1), never white.
+ *  - Prices use --price (#B8460F, 5.4:1 on white); dark mode uses brighter orange.
+ *  - Links use --link (darker sky) for text; raw sky #1FA2FF is for fills/markers.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Fareway brand */
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-link: var(--link);
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-price: var(--price);
+  --color-deal-soft: var(--deal-soft);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-hero: var(--hero);
+
+  /* 12px controls, 16px cards (DESIGN.md "Shapes") */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  --shadow-card: 0 4px 20px -2px rgb(11 61 145 / 0.06);
+  --shadow-raised: 0 10px 28px -4px rgb(11 61 145 / 0.12);
+  --shadow-float: 0 20px 40px -6px rgb(15 27 45 / 0.16);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: #f6f9fc;
+  --foreground: #0f1b2d;
+  --card: #ffffff;
+  --card-foreground: #0f1b2d;
+  --popover: #ffffff;
+  --popover-foreground: #0f1b2d;
+  --primary: #0b3d91;
+  --primary-foreground: #ffffff;
+  --secondary: #ebf6ff;
+  --secondary-foreground: #0b3d91;
+  --muted: #f1f5f9;
+  --muted-foreground: #4f5d72;
+  --accent: #ebf6ff;
+  --accent-foreground: #0b3d91;
+  --destructive: #c62828;
+  --border: #e2e8f0;
+  --input: #cbd5e1;
+  --ring: #1fa2ff;
+
+  --brand: #0b3d91;
+  --brand-foreground: #ffffff;
+  --sky: #1fa2ff;
+  --sky-soft: #ebf6ff;
+  --link: #0a66b8;
+  --cta: #ff7a3d;
+  --cta-hover: #f26a2a;
+  --cta-foreground: #0f1b2d;
+  --price: #b8460f;
+  --deal-soft: #fff2eb;
+  --success: #1e9e5a;
+  --success-foreground: #146c3d;
+  --success-soft: #e8f7f0;
+  --warning: #b45309;
+  --warning-soft: #fff7e6;
+  --hero: linear-gradient(135deg, #0b3d91 0%, #0d4fb8 55%, #1572d6 100%);
+}
+
+.dark {
+  --background: #0a1424;
+  --foreground: #e6edf7;
+  --card: #111e33;
+  --card-foreground: #e6edf7;
+  --popover: #13223a;
+  --popover-foreground: #e6edf7;
+  --primary: #7aaeff;
+  --primary-foreground: #0a1424;
+  --secondary: #16294a;
+  --secondary-foreground: #cfe0ff;
+  --muted: #16233a;
+  --muted-foreground: #a3b3c9;
+  --accent: #1a3058;
+  --accent-foreground: #e6edf7;
+  --destructive: #ff6b6b;
+  --border: #22324d;
+  --input: #34486a;
+  --ring: #4db5ff;
+
+  --brand: #0b3d91;
+  --brand-foreground: #ffffff;
+  --sky: #4db5ff;
+  --sky-soft: #132c4d;
+  --link: #6cc2ff;
+  --cta: #ff7a3d;
+  --cta-hover: #ff8f5c;
+  --cta-foreground: #0f1b2d;
+  --price: #ff9a66;
+  --deal-soft: #3a1f12;
+  --success: #3ccb7f;
+  --success-foreground: #5fe09a;
+  --success-soft: #0f2e20;
+  --warning: #fbbf24;
+  --warning-soft: #33270d;
+  --hero: linear-gradient(135deg, #071f4d 0%, #0a2f6e 55%, #0d4196 100%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Twemoji Country Flags", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* Always-visible keyboard focus (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Tabular figures for times and prices (DESIGN.md "Typography") */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+  .bg-hero {
+    background: var(--hero);
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .card-surface {
+    @apply rounded-xl border border-border bg-card text-card-foreground shadow-card;
+  }
+}
