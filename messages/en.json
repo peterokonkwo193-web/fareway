@@ -53,5 +53,128 @@
     "body": "We only use essential cookies to remember your currency, language and theme, and to keep staff signed in. No advertising or tracking cookies.",
     "accept": "OK, got it",
     "learnMore": "Read our privacy policy"
+  },
+  "search": {
+    "tabs": {
+      "flights": "Flights",
+      "hotels": "Hotels",
+      "cars": "Car hire"
+    },
+    "comingSoon": {
+      "hotels": {
+        "title": "Hotels are coming soon",
+        "body": "We are starting with flights. Hotel search will join Fareway later."
+      },
+      "cars": {
+        "title": "Car hire is coming soon",
+        "body": "We are starting with flights. Car hire search will join Fareway later."
+      }
+    },
+    "tripType": "Trip type",
+    "trip": {
+      "return": "Return",
+      "oneway": "One way",
+      "multi": "Multi-city"
+    },
+    "from": "From",
+    "to": "To",
+    "placePlaceholder": "Country, city or airport",
+    "toPlaceholder": "Country, city, airport or Everywhere",
+    "swap": "Swap origin and destination",
+    "depart": "Depart",
+    "return": "Return",
+    "addDate": "Add date",
+    "chooseDate": "Choose a date",
+    "chooseDepart": "Choose your departure date",
+    "chooseReturn": "Now choose your return date",
+    "calendarHint": "Use arrow keys to move between days, Enter to select.",
+    "done": "Done",
+    "submit": "Search flights",
+    "travellersAndCabin": "Travellers & cabin",
+    "travellerCount": "{count, plural, one {# traveller} other {# travellers}}",
+    "adults": "Adults",
+    "adultsHint": "12 years and over",
+    "children": "Children",
+    "childrenHint": "2 to 11 years",
+    "infants": "Infants",
+    "infantsHint": "Under 2, on an adult's lap",
+    "increase": "Add one: {label}",
+    "decrease": "Remove one: {label}",
+    "cabinClass": "Cabin class",
+    "cabins": {
+      "economy": "Economy",
+      "premium": "Premium economy",
+      "business": "Business",
+      "first": "First"
+    },
+    "maxTravellers": "Up to {max} travellers per request. For larger groups, contact customer care.",
+    "flightN": "Flight {n}",
+    "addFlight": "Add another flight",
+    "removeFlight": "Remove flight {n}",
+    "recent": "Recent searches",
+    "everywhere": "Everywhere",
+    "everywhereDetail": "Find the cheapest places to fly",
+    "anyAirport": "any airport",
+    "groups": {
+      "country": "Countries",
+      "city": "Cities",
+      "airport": "Airports",
+      "recent": "Recent"
+    },
+    "noPlaces": "No places match “{query}”. Try a city, country or 3-letter airport code.",
+    "resultsCount": "{count, plural, =0 {No results} one {# result available} other {# results available}}",
+    "clearField": "Clear {field}",
+    "errors": {
+      "from": "Choose where you are flying from",
+      "to": "Choose where you are flying to",
+      "date": "Choose a departure date",
+      "return": "Choose a return date"
+    }
+  },
+  "home": {
+    "eyebrow": "Every country. One simple search.",
+    "title": "Find the cheapest way to fly",
+    "subtitle": "Compare flights to and from every country in the world. Choose your flight and our customer care team confirms the price and completes your booking with you.",
+    "exploreEyebrow": "Not sure where to go?",
+    "exploreTitle": "Explore everywhere",
+    "exploreBody": "See the cheapest places to fly from your nearest airport, filtered by continent, budget, month and flight time.",
+    "exploreCta": "Explore destinations",
+    "whyEyebrow": "Why Fareway",
+    "whyTitle": "Flight search without the pressure",
+    "why": {
+      "global": {
+        "title": "Every country covered",
+        "body": "Search 250 countries and territories and thousands of airports, including places without their own airport."
+      },
+      "people": {
+        "title": "Real people, not checkout pages",
+        "body": "You never pay on this website. Our customer care team confirms availability and the final price before you pay."
+      },
+      "honest": {
+        "title": "No fake urgency",
+        "body": "No countdown timers, no “only 2 seats left” tricks. Prices are shown as indicative, and we tell you why."
+      }
+    },
+    "howEyebrow": "How booking works",
+    "howTitle": "Four steps from search to boarding pass",
+    "how": {
+      "search": {
+        "title": "Search and compare",
+        "body": "Find a flight that suits you by price, duration and stops."
+      },
+      "request": {
+        "title": "Send a request",
+        "body": "Add passenger details. You get a reference number straight away, with no payment taken."
+      },
+      "contact": {
+        "title": "Talk to customer care",
+        "body": "Contact us by WhatsApp, phone or email with your reference. We confirm the price and availability."
+      },
+      "pay": {
+        "title": "Pay and fly",
+        "body": "You pay through customer care. Your booking is confirmed only once payment is complete."
+      }
+    },
+    "howNote": "Requests are held for 48 hours. If we have not heard from you by then, the request expires and you can simply search again."
   }
 }

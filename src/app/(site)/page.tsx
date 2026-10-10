@@ -1,18 +1,35 @@
-import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
+import { BadgeCheck } from "lucide-react";
+import { SearchWidget } from "@/components/search/search-widget";
+import { ExploreBanner, HowBookingWorks, WhyFareway } from "@/components/home/info-sections";
+import { getDefaultOrigin } from "@/lib/geo/default-origin";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [t, defaultOrigin] = await Promise.all([getTranslations("home"), getDefaultOrigin()]);
   return (
-    <section className="bg-hero text-white">
-      <div className="container-page py-16 md:py-24">
-        <h1 className="text-[2rem] leading-[2.375rem] font-extrabold tracking-tight md:text-[2.5rem] md:leading-[3rem]">
-          Find the cheapest way to fly
-        </h1>
-        <p className="mt-3 max-w-xl text-white/85">Search widget arrives in the next step.</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button variant="cta" size="xl">Search flights</Button>
-          <span className="rounded-xl bg-card px-4 py-3 text-2xl font-bold text-price tnum">$389</span>
+    <>
+      <section className="bg-hero pb-28 text-white md:pb-32">
+        <div className="container-page pt-10 md:pt-16">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1 text-xs font-semibold">
+            <BadgeCheck className="size-4" aria-hidden="true" />
+            {t("eyebrow")}
+          </p>
+          <h1 className="mt-4 text-[2rem] leading-[2.375rem] font-extrabold tracking-tight md:text-[2.5rem] md:leading-[3rem]">
+            {t("title")}
+          </h1>
+          <p className="mt-3 max-w-2xl text-white/85 md:text-lg">{t("subtitle")}</p>
+        </div>
+      </section>
+      <div className="container-page -mt-24 md:-mt-24">
+        <div className="rounded-2xl border border-border bg-card p-4 text-card-foreground shadow-float sm:p-6">
+          <SearchWidget defaultOrigin={defaultOrigin} />
         </div>
       </div>
-    </section>
+      <div className="mt-14 space-y-14">
+        <ExploreBanner />
+        <WhyFareway />
+        <HowBookingWorks />
+      </div>
+    </>
   );
 }

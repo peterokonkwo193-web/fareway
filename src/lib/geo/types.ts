@@ -59,6 +59,8 @@ export type Place = {
   /** Secondary line, e.g. "London, United Kingdom". */
   detail: string;
   countryCode?: string;
+  /** City name for airports (used for compact labels like "London (LHR)"). */
+  city?: string;
   flag?: string;
   /** Airports this place resolves to when searching flights (best first). */
   airports: string[];

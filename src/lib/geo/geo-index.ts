@@ -150,6 +150,7 @@ export function createGeoIndex(data: { countries: Country[]; airports: Airport[]
       code: a.iata,
       detail: `${a.city}, ${c?.name ?? a.countryCode}`,
       countryCode: a.countryCode,
+      city: a.city,
       flag: c?.flag,
       airports: [a.iata],
     };
