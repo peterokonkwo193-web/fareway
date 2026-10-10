@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "data:geo": "tsx scripts/build-geo-data.ts",
+    "data:fx": "tsx scripts/refresh-fx.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

@@ -1,16 +1,27 @@
-// Temporary seed list; replaced by the full list derived from data/countries.json
-// in the data step.
-export const CURRENCY_COOKIE = "fw_currency";
-export const DEFAULT_CURRENCY = "USD";
+import "server-only";
+import { geo } from "@/lib/geo/data";
+import { hasRate } from "./convert";
+import { DEFAULT_CURRENCY, type CurrencyInfo } from "./constants";
 
-export type CurrencyInfo = { code: string; symbol: string; name: string };
+/** Every currency used by a country in data/countries.json, USD/EUR/GBP first. */
+export const currencies: CurrencyInfo[] = (() => {
+  const map = new Map<string, CurrencyInfo>();
+  for (const c of geo.countries) {
+    if (c.currency && !map.has(c.currency.code)) {
+      map.set(c.currency.code, { ...c.currency, hasRate: hasRate(c.currency.code) });
+    }
+  }
+  const pinned = ["USD", "EUR", "GBP"];
+  return [...map.values()].sort((a, b) => {
+    const pa = pinned.indexOf(a.code);
+    const pb = pinned.indexOf(b.code);
+    if (pa !== -1 || pb !== -1) return (pa === -1 ? 99 : pa) - (pb === -1 ? 99 : pb);
+    return a.code.localeCompare(b.code);
+  });
+})();
 
-export const currencies: CurrencyInfo[] = [
-  { code: "USD", symbol: "$", name: "US dollar" },
-  { code: "EUR", symbol: "€", name: "Euro" },
-  { code: "GBP", symbol: "£", name: "British pound" },
-];
+const codes = new Set(currencies.map((c) => c.code));
 
 export function isSupportedCurrency(code: string) {
-  return currencies.some((c) => c.code === code);
+  return codes.has(code) || code === DEFAULT_CURRENCY;
 }

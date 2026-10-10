@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CURRENCY_COOKIE } from "@/lib/currency/currencies";
+import { CURRENCY_COOKIE } from "@/lib/currency/constants";
 import { LOCALE_COOKIE } from "@/i18n/config";
 
 type Preferences = {

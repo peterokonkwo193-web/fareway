@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { usePreferences } from "@/components/preferences-provider";
 import { localeLabels, locales } from "@/i18n/config";
-import type { CurrencyInfo } from "@/lib/currency/currencies";
+import type { CurrencyInfo } from "@/lib/currency/constants";
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle() {
@@ -118,7 +118,7 @@ export function CurrencyPicker({ currencies, className }: { currencies: Currency
                 >
                   <span className="w-10 font-semibold tnum">{c.code}</span>
                   <span className="min-w-0 flex-1 truncate">{c.name}</span>
-                  <span className="text-muted-foreground">{c.symbol}</span>
+                  <span className="text-muted-foreground">{c.hasRate ? c.symbol : t("shownInUsd")}</span>
                   {selected && <Check className="size-4" aria-hidden="true" />}
                 </button>
               </li>

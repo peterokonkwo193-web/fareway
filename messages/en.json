@@ -12,6 +12,7 @@
     "chooseCurrency": "Choose a currency",
     "searchCurrencies": "Search currencies",
     "noMatches": "No matches",
+    "shownInUsd": "USD prices",
     "indicativePrices": "Prices are indicative and confirmed by customer care before payment."
   },
   "nav": {

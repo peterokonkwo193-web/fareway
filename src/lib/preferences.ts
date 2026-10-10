@@ -1,6 +1,7 @@
 import "server-only";
 import { cookies } from "next/headers";
-import { CURRENCY_COOKIE, DEFAULT_CURRENCY, isSupportedCurrency } from "@/lib/currency/currencies";
+import { CURRENCY_COOKIE, DEFAULT_CURRENCY } from "@/lib/currency/constants";
+import { isSupportedCurrency } from "@/lib/currency/currencies";
 
 export async function getCurrency(): Promise<string> {
   const store = await cookies();
