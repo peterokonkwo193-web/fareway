@@ -97,3 +97,12 @@ export function cheapestThisMonth(origin: Place, limit = 5): Promise<Deal[]> {
 }
 
 export { memo as memoDeals };
+
+/** Photo for a destination airport, when we have one. */
+export function imageForAirport(iata: string): string | undefined {
+  for (const d of destinations) {
+    if (!d.image) continue;
+    if (geo.resolvePlace(d.place)?.airports.includes(iata)) return d.image;
+  }
+  return undefined;
+}

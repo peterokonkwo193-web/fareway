@@ -125,21 +125,34 @@ export function createMockProvider({ geo, airlines, now = () => new Date() }: { 
           .filter(({ airline, hub }) => hub !== from && hub !== to && (!strict || serves(airline, iata)))
           .map((o) => ({ ...o, d: dist(iata, o.hub) }))
           .sort((x, y) => x.d - y.d);
+      const MAX_LEG_KM = 14000;
       const farEnough = (o: { d: number }) => o.d > 300;
       const starts = (nearestHubs(from, true).length ? nearestHubs(from, true) : nearestHubs(from, false)).filter(farEnough);
-      const ends = (nearestHubs(to, true).length ? nearestHubs(to, true) : nearestHubs(to, false)).filter(farEnough);
+      // First hop to a nearby hub, then the shortest sensible hub-to-destination chain.
+      const options: { hops: string[]; carriers: AirlineRecord[]; km: number }[] = [];
       for (const s of starts.slice(0, 3)) {
-        for (const e of ends.slice(0, 3)) {
-          if (plans.length >= 4) break;
-          if (s.hub === e.hub) {
-            if (!plans.some((p) => p.hops.join() === [from, s.hub, to].join())) {
-              plans.push({ hops: [from, s.hub, to], carriers: [s.airline, e.airline] });
-            }
-            continue;
-          }
-          const middle = serves(s.airline, e.hub) ? s.airline : e.airline;
-          plans.push({ hops: [from, s.hub, e.hub, to], carriers: [s.airline, middle, e.airline] });
+        for (const e of hubOwners) {
+          if (e.hub === from || e.hub === to || e.hub === s.hub) continue;
+          const mid = dist(s.hub, e.hub);
+          const last = dist(e.hub, to);
+          if (mid < 300 || mid > MAX_LEG_KM || last < 300 || last > MAX_LEG_KM || !serves(e.airline, to)) continue;
+          const middle = serves(e.airline, s.hub) ? e.airline : serves(s.airline, e.hub) ? s.airline : null;
+          if (!middle) continue;
+          options.push({ hops: [from, s.hub, e.hub, to], carriers: [s.airline, middle, e.airline], km: s.d + mid + last });
         }
+        // The nearby hub may connect to the destination directly.
+        const directOwner = airlines.find((a) => serves(a, s.hub) && serves(a, to) && (a.hubs.includes(s.hub) || a.hubs.includes(to)));
+        if (directOwner && dist(s.hub, to) <= MAX_LEG_KM) {
+          options.push({ hops: [from, s.hub, to], carriers: [s.airline, directOwner], km: s.d + dist(s.hub, to) });
+        }
+      }
+      const seen = new Set(plans.map((p) => p.hops.join()));
+      for (const o of options.sort((a, b) => a.km - b.km)) {
+        if (plans.length >= 5) break;
+        const key = o.hops.join();
+        if (seen.has(key)) continue;
+        seen.add(key);
+        plans.push({ hops: o.hops, carriers: o.carriers });
       }
     }
     return plans;
@@ -371,6 +384,7 @@ export function createMockProvider({ geo, airlines, now = () => new Date() }: { 
     return {
       id: encodeId(query, key),
       provider: "mock",
+      searchQuery: searchQueryToParams(query).toString(),
       cabin: query.cabin,
       slices,
       carriers,

@@ -73,6 +73,8 @@ export type FlightOffer = {
   /** Opaque id; the provider can rebuild the offer from it. */
   id: string;
   provider: string;
+  /** Canonical search query string that produced this offer (for "back to results"). */
+  searchQuery: string;
   cabin: Cabin;
   slices: Slice[];
   carriers: Carrier[];
