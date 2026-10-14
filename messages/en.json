@@ -176,5 +176,18 @@
       }
     },
     "howNote": "Requests are held for 48 hours. If we have not heard from you by then, the request expires and you can simply search again."
+  },
+  "deals": {
+    "popularEyebrow": "Trending escapes",
+    "popularTitle": "Popular destinations from {origin}",
+    "monthEyebrow": "Next 30 days",
+    "monthTitle": "Cheapest this month from {origin}",
+    "seeAll": "Explore all deals",
+    "direct": "Direct",
+    "stops": "{count, plural, one {# stop} other {# stops}}",
+    "returnTrip": "Return trip",
+    "from": "From",
+    "returnFrom": "Return from",
+    "indicative": "Indicative return prices per adult in economy. Your exact price is confirmed by customer care before you pay."
   }
 }

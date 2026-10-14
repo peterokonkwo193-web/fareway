@@ -1,11 +1,18 @@
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { BadgeCheck } from "lucide-react";
 import { SearchWidget } from "@/components/search/search-widget";
 import { ExploreBanner, HowBookingWorks, WhyFareway } from "@/components/home/info-sections";
+import { CheapestThisMonth, PopularDestinations } from "@/components/home/deal-sections";
+import { DealsSkeleton } from "@/components/home/deals-skeleton";
 import { getDefaultOrigin } from "@/lib/geo/default-origin";
+import { geo } from "@/lib/geo/data";
+import { getCurrency } from "@/lib/preferences";
 
 export default async function HomePage() {
-  const [t, defaultOrigin] = await Promise.all([getTranslations("home"), getDefaultOrigin()]);
+  const [t, defaultOrigin, currency] = await Promise.all([getTranslations("home"), getDefaultOrigin(), getCurrency()]);
+  // Deals need an origin; London is a neutral fallback when the visitor's country is unknown.
+  const dealOrigin = defaultOrigin ?? geo.resolvePlace("city:LON")!;
   return (
     <>
       <section className="bg-hero pb-28 text-white md:pb-32">
@@ -27,6 +34,11 @@ export default async function HomePage() {
       </div>
       <div className="mt-14 space-y-14">
         <ExploreBanner />
+        <Suspense fallback={<DealsSkeleton />}>
+          <PopularDestinations origin={dealOrigin} currency={currency} />
+          <div className="h-14" aria-hidden="true" />
+          <CheapestThisMonth origin={dealOrigin} currency={currency} />
+        </Suspense>
         <WhyFareway />
         <HowBookingWorks />
       </div>
