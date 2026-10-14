@@ -8,7 +8,14 @@
     "start": "next start",
     "lint": "eslint",
     "data:geo": "tsx scripts/build-geo-data.ts",
-    "data:fx": "tsx scripts/refresh-fx.ts"
+    "data:fx": "tsx scripts/refresh-fx.ts",
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "admin:hash": "tsx scripts/hash-password.ts",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

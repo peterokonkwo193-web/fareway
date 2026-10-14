@@ -1,0 +1,119 @@
+// Fareway database schema.
+// SQLite locally; switch `provider` to "postgresql" for production (see README).
+// Enums are stored as strings (validated with Zod in src/lib/booking/status.ts)
+// so the same schema works on SQLite and Postgres.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model BookingRequest {
+  id              String   @id @default(cuid())
+  /// FW-YYMMDD-XXXXX
+  reference       String   @unique
+  /// PENDING | CONTACTED | AWAITING_PAYMENT | CONFIRMED | CANCELLED | EXPIRED
+  status          String   @default("PENDING")
+  /// Full name exactly as on passport
+  contactName     String
+  contactEmail    String
+  /// E.164, e.g. +447700900123
+  contactPhone    String
+  contactDialCode String
+  notes           String?
+  /// JSON snapshot of the FlightOffer the customer saw (src/lib/flights/types.ts)
+  flightSnapshot  String
+  /// Denormalised for admin filters
+  originCode      String
+  destinationCode String
+  destCountryCode String
+  departDate      DateTime
+  /// Whole currency units, as quoted to the customer
+  quotedPrice     Int
+  currency        String
+  quotedPriceUsd  Int
+  expiresAt       DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  passengers    Passenger[]
+  internalNotes InternalNote[]
+  statusHistory StatusChange[]
+
+  @@index([status])
+  @@index([contactEmail])
+  @@index([createdAt])
+  @@index([destCountryCode])
+}
+
+model Passenger {
+  id          String         @id @default(cuid())
+  bookingId   String
+  /// ADULT | CHILD | INFANT
+  type        String
+  firstName   String
+  lastName    String
+  dateOfBirth DateTime
+  /// ISO 3166-1 alpha-2 passport nationality
+  nationality String
+  position    Int
+  booking     BookingRequest @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model InternalNote {
+  id        String         @id @default(cuid())
+  bookingId String
+  author    String
+  body      String
+  createdAt DateTime       @default(now())
+  booking   BookingRequest @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model StatusChange {
+  id        String         @id @default(cuid())
+  bookingId String
+  from      String
+  to        String
+  changedBy String
+  createdAt DateTime       @default(now())
+  booking   BookingRequest @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model PriceAlert {
+  id               String    @id @default(cuid())
+  email            String
+  /// Canonical search query string (src/lib/search/query.ts)
+  searchQuery      String
+  routeLabel       String
+  maxPrice         Int?
+  currency         String
+  unsubscribeToken String    @unique
+  createdAt        DateTime  @default(now())
+  cancelledAt      DateTime?
+
+  @@index([email])
+}
+
+model DataDeletionRequest {
+  id          String    @id @default(cuid())
+  email       String
+  reference   String?
+  /// RECEIVED | COMPLETED | REJECTED
+  status      String    @default("RECEIVED")
+  createdAt   DateTime  @default(now())
+  processedAt DateTime?
+  /// Number of booking requests removed when processed
+  removedCount Int?
+
+  @@index([status])
+}
