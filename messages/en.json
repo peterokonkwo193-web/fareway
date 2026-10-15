@@ -469,5 +469,19 @@
     "invalidEmail": "Enter a valid email address",
     "notFound": "We could not find a request with that reference and email. Check both and try again.",
     "tooMany": "Too many attempts. Please wait a few minutes and try again."
+  },
+  "dataRequest": {
+    "title": "Delete my data",
+    "intro": "You can ask us to delete the personal data we hold about you: booking requests, passenger details and price alerts linked to your email address. We complete requests within 30 days and may contact you to confirm it is you.",
+    "email": "Email address you used",
+    "reference": "Booking reference (optional)",
+    "confirm": "I understand this permanently deletes my booking requests and price alerts. Confirmed bookings already passed to an airline are handled under the airline's own policy.",
+    "submit": "Send deletion request",
+    "invalidEmail": "Enter a valid email address.",
+    "confirmRequired": "Please confirm you understand what will be deleted.",
+    "tooMany": "Too many requests from this connection. Try again later.",
+    "failed": "We could not send your request. Please try again or contact customer care.",
+    "doneTitle": "Request received",
+    "doneBody": "If we hold data for this email address, we will delete it within 30 days. We have sent an acknowledgement to the address you entered."
   }
 }
