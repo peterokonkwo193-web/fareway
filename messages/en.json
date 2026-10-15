@@ -483,5 +483,44 @@
     "failed": "We could not send your request. Please try again or contact customer care.",
     "doneTitle": "Request received",
     "doneBody": "If we hold data for this email address, we will delete it within 30 days. We have sent an acknowledgement to the address you entered."
+  },
+  "explore": {
+    "eyebrow": "Explore everywhere",
+    "title": "Where can you fly for less?",
+    "subtitle": "Pick where you are flying from and see indicative prices to every country, then narrow it down by continent, budget, month and flight time.",
+    "from": "Flying from (any country, city or airport)",
+    "month": "Travel month",
+    "searchCountry": "Jump to a country or city",
+    "sortBy": "Sort destinations",
+    "sort": {
+      "cheapest": "Cheapest first",
+      "fastest": "Shortest flight",
+      "name": "Country A–Z"
+    },
+    "continent": "Continent",
+    "allContinents": "All continents",
+    "continents": {
+      "Africa": "Africa",
+      "Asia": "Asia",
+      "Europe": "Europe",
+      "NorthAmerica": "North America",
+      "SouthAmerica": "South America",
+      "Oceania": "Oceania",
+      "Antarctica": "Antarctica"
+    },
+    "budget": "Budget",
+    "under": "Under {price}",
+    "anyBudget": "Any budget",
+    "flightLength": "Flight time",
+    "length": {
+      "short": "Under 3h",
+      "medium": "3–6h",
+      "long": "6–12h",
+      "ultra": "12h+"
+    },
+    "count": "{count, plural, =0 {No destinations} one {# destination} other {# destinations}}",
+    "emptyTitle": "No destinations match",
+    "emptyBody": "Try another continent, a higher budget or a different flight time.",
+    "indicative": "Indicative return prices per adult in economy for the cheapest sampled dates in the month. Customer care confirms the final price before you pay."
   }
 }

@@ -59,8 +59,19 @@ export function createMockProvider({ geo, airlines, now = () => new Date() }: { 
   const dist = (a: string, b: string) => haversineKm(ap(a), ap(b));
   const continentOf = (cc: string) => geo.getCountry(cc)?.continent;
 
-  /** Can this airline plausibly fly to/from this airport (from one of its hubs)? */
+  const servesCache = new Map<string, boolean>();
+  /** Can this airline plausibly fly to/from this airport (from one of its hubs)? Memoised. */
   function serves(airline: AirlineRecord, iata: string): boolean {
+    const key = `${airline.code}|${iata}`;
+    let hit = servesCache.get(key);
+    if (hit === undefined) {
+      hit = computeServes(airline, iata);
+      servesCache.set(key, hit);
+    }
+    return hit;
+  }
+
+  function computeServes(airline: AirlineRecord, iata: string): boolean {
     const airport = ap(iata);
     if (airline.country === airport.countryCode || airline.hubs.includes(iata)) return true;
     const nearestHub = Math.min(...airline.hubs.map((h) => (geo.getAirport(h) ? haversineKm(ap(h), airport) : Infinity)));
