@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { format, parseISO } from "date-fns";
 import { Clock, Plane, Search, SearchX } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { formatMoney } from "@/lib/currency/format";
 import { formatDuration } from "@/lib/flights/time";
@@ -21,6 +22,8 @@ const LENGTHS = ["short", "medium", "long", "ultra"] as const;
 type Length = (typeof LENGTHS)[number];
 const lengthRange: Record<Length, [number, number]> = { short: [0, 180], medium: [180, 360], long: [360, 720], ultra: [720, Infinity] };
 const SORTS = ["cheapest", "fastest", "name"] as const;
+/** Cards rendered at once; filters still apply to every country. */
+const PAGE = 24;
 type Sort = (typeof SORTS)[number];
 
 const gradients = ["from-[#0b3d91] to-[#1fa2ff]", "from-[#0d4fb8] to-[#38bdf8]", "from-[#173a6b] to-[#ff7a3d]", "from-[#0f766e] to-[#1fa2ff]"];
@@ -58,6 +61,7 @@ export function ExploreGrid({ cards, currency, originId }: { cards: ExploreCard[
   const tDeals = useTranslations("deals");
   const locale = useLocale();
   const params = useSearchParams();
+  const [limit, setLimit] = useState(PAGE);
 
   const continent = (CONTINENTS as string[]).includes(params.get("continent") ?? "") ? (params.get("continent") as Continent) : null;
   const budget = Number(params.get("budget")) || null;
@@ -70,6 +74,7 @@ export function ExploreGrid({ cards, currency, originId }: { cards: ExploreCard[
     if (value) p.set(key, value);
     else p.delete(key);
     window.history.replaceState(null, "", `/explore?${p.toString()}`);
+    setLimit(PAGE);
   };
 
   const budgets = useMemo(() => budgetSteps(cards.map((c) => c.price)), [cards]);
@@ -171,7 +176,7 @@ export function ExploreGrid({ cards, currency, originId }: { cards: ExploreCard[
         </div>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {visible.map((c, i) => (
+          {visible.slice(0, limit).map((c, i) => (
             <li key={c.countryCode}>
               <Link
                 href={flightsHref({ from: originId, to: c.placeId, depart: c.departDate, returnDate: c.returnDate })}
@@ -221,6 +226,13 @@ export function ExploreGrid({ cards, currency, originId }: { cards: ExploreCard[
             </li>
           ))}
         </ul>
+      )}
+      {visible.length > limit && (
+        <div className="flex justify-center">
+          <Button variant="outline" size="lg" onClick={() => setLimit((l) => l + PAGE * 2)}>
+            {t("showMore", { count: Math.min(PAGE * 2, visible.length - limit) })}
+          </Button>
+        </div>
       )}
       <p className="text-xs text-muted-foreground">{t("indicative")}</p>
     </div>

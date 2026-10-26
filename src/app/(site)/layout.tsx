@@ -1,11 +1,14 @@
+import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileBottomNav } from "@/components/layout/main-nav";
 import { CookieNotice } from "@/components/layout/cookie-notice";
+import { COOKIE_NOTICE_COOKIE } from "@/lib/cookie-notice";
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const t = await getTranslations("common");
+  const [t, store] = await Promise.all([getTranslations("common"), cookies()]);
+  const showCookieNotice = !store.has(COOKIE_NOTICE_COOKIE);
   return (
     <div className="flex min-h-dvh flex-col">
       <a
@@ -20,7 +23,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       </main>
       <SiteFooter />
       <MobileBottomNav />
-      <CookieNotice />
+      {showCookieNotice && <CookieNotice />}
     </div>
   );
 }

@@ -1,34 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Cookie } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { COOKIE_NOTICE_COOKIE } from "@/lib/cookie-notice";
 
-const STORAGE_KEY = "fw_cookie_notice";
-
+/**
+ * Rendered on the server only when the fw_cookie_ok cookie is absent, so it is
+ * part of the first paint instead of popping in after hydration.
+ */
 export function CookieNotice() {
   const t = useTranslations("cookies");
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    try {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- reading browser-only storage after mount
-      setVisible(localStorage.getItem(STORAGE_KEY) !== "1");
-    } catch {
-      setVisible(true);
-    }
-  }, []);
-
+  const [visible, setVisible] = useState(true);
   if (!visible) return null;
 
   function dismiss() {
-    try {
-      localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      /* storage blocked: hide for this view only */
-    }
+    document.cookie = `${COOKIE_NOTICE_COOKIE}=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
     setVisible(false);
   }
 

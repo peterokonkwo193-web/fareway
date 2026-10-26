@@ -521,6 +521,7 @@
     "count": "{count, plural, =0 {No destinations} one {# destination} other {# destinations}}",
     "emptyTitle": "No destinations match",
     "emptyBody": "Try another continent, a higher budget or a different flight time.",
-    "indicative": "Indicative return prices per adult in economy for the cheapest sampled dates in the month. Customer care confirms the final price before you pay."
+    "indicative": "Indicative return prices per adult in economy for the cheapest sampled dates in the month. Customer care confirms the final price before you pay.",
+    "showMore": "Show {count} more destinations"
   }
 }

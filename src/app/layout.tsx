@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
-import { FlagPolyfill } from "@/components/flag-polyfill";
 import { getCurrency } from "@/lib/preferences";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -41,7 +40,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <NextIntlClientProvider>
           <Providers currency={currency}>{children}</Providers>
         </NextIntlClientProvider>
-        <FlagPolyfill />
       </body>
     </html>
   );

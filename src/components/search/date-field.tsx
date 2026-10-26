@@ -5,7 +5,13 @@ import { addDays, format, parseISO } from "date-fns";
 import { useTranslations } from "next-intl";
 import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import dynamic from "next/dynamic";
+
+// The calendar (react-day-picker) loads only when a date picker is opened.
+const Calendar = dynamic(() => import("@/components/ui/calendar").then((m) => m.Calendar), {
+  ssr: false,
+  loading: () => <div className="h-[21rem] w-[19rem] animate-pulse rounded-lg bg-muted md:w-[37rem]" aria-hidden="true" />,
+});
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { MAX_DAYS_AHEAD, toIsoDate } from "@/lib/search/query";

@@ -61,7 +61,7 @@ export function PlaceCombobox({
   const [active, setActive] = useState(0);
   const debounced = useDebouncedValue(text.trim(), 120);
 
-  const { data = [], isFetching } = useQuery({
+  const { data = [], isFetching, isPlaceholderData } = useQuery({
     queryKey: ["places", debounced, allowEverywhere],
     queryFn: () => fetchPlaces(debounced, allowEverywhere),
     enabled: open && debounced.length > 0,
@@ -93,6 +93,19 @@ export function PlaceCombobox({
   }
 
   const showList = open && options.length > 0;
+  // Options match what is typed (not a debounced/previous result list).
+  const query = text.trim();
+  const fresh = !editing || query === "" || (debounced === query && !isFetching && !isPlaceholderData);
+  // Enter pressed before results caught up: select once they arrive.
+  const [pendingEnter, setPendingEnter] = useState(false);
+  useEffect(() => {
+    if (!pendingEnter || !fresh) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- completes a keypress made while results were loading
+    setPendingEnter(false);
+    if (options[0]) select(options[0]);
+    // select is stable enough here; it only closes the list and reports the choice.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingEnter, fresh, options]);
   const showEmpty = open && !!debounced && !isFetching && options.length === 0;
 
   function select(option: Suggestion) {
@@ -116,7 +129,10 @@ export function PlaceCombobox({
     } else if (e.key === "End" && open) {
       setActive(Math.max(0, options.length - 1));
     } else if (e.key === "Enter") {
-      if (showList && options[active]) {
+      if (!fresh) {
+        e.preventDefault();
+        setPendingEnter(true);
+      } else if (showList && options[active]) {
         e.preventDefault();
         select(options[active]);
       }
@@ -128,7 +144,7 @@ export function PlaceCombobox({
         setText("");
       }
     } else if (e.key === "Tab") {
-      if (showList && editing && debounced && options[active]) select(options[active]);
+      if (fresh && showList && editing && query && options[active]) select(options[active]);
       setOpen(false);
     }
   }
@@ -185,7 +201,7 @@ export function PlaceCombobox({
               setText("");
             }}
             onKeyDown={onKeyDown}
-            className="w-full truncate bg-transparent text-[0.9375rem] font-semibold text-foreground outline-none placeholder:font-normal placeholder:text-muted-foreground"
+            className="h-6 w-full truncate bg-transparent text-[0.9375rem] font-semibold text-foreground outline-none placeholder:font-normal placeholder:text-muted-foreground"
           />
         </div>
         {isFetching && open ? (
